@@ -1,0 +1,9 @@
+user name => username (decode/encode user)
+password => username + password (decode/encode password)
+user fullname => Decode/encode user
+createby,editby,validateby => decode/encode user
+group name => decode/encode group
+grou desc => decode/encode user
+p2ssw0rd
+
+ 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Configuration>
+  <GENERAL>
+    <ApplicationPath>V:\Client.v1rc</ApplicationPath>
+  </GENERAL>
+  <DB>
+    <DataSource>V:\Client.v1rc\DB</DataSource>
+    <Username/>
+    <Password/>
+  </DB>
+</Configuration>

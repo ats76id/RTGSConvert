@@ -1,0 +1,3 @@
+'\SOFTWARE\Classes\CLSID\{0DB144DB-9BB4-11D5-A057-00805F9BC824}\Info'
+Your system tim is invalid
+please set the correct date and time to continue
