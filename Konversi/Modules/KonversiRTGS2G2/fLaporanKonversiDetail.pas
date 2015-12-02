@@ -11,8 +11,6 @@ type
   TfrmLaporanKonversiDetail = class(TForm)
     AdvPanel1: TAdvPanel;
     Panel2: TPanel;
-    btnGeneralEdit: TBitBtn;
-    btnGeneralSave: TBitBtn;
     AdvGroupBox1: TAdvGroupBox;
     Label1: TLabel;
     dtpTanggalKonversi: TAdvDateTimePicker;
@@ -23,6 +21,8 @@ type
     cboStatusKonversi: TComboBox;
     Label3: TLabel;
     XPManifest1: TXPManifest;
+    btnGeneralEdit: TBitBtn;
+    btnGeneralSave: TBitBtn;
     procedure btnGeneralEditClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);

@@ -127,15 +127,12 @@ object frmLaporanKonversiDetail: TfrmLaporanKonversiDetail
         Top = 19
         Width = 117
         Height = 21
-        BevelInner = bvNone
-        BevelOuter = bvNone
-        BevelKind = bkFlat
         Date = 41320.169918981480000000
         Time = 41320.169918981480000000
         Kind = dkDate
         TabOrder = 0
-        BorderStyle = bsNone
-        Ctl3D = True
+        BorderStyle = bsSingle
+        Ctl3D = False
         DateTime = 41320.169918981480000000
         Version = '1.2.0.5'
         LabelFont.Charset = DEFAULT_CHARSET
@@ -151,7 +148,7 @@ object frmLaporanKonversiDetail: TfrmLaporanKonversiDetail
         Height = 21
         BevelKind = bkFlat
         Style = csDropDownList
-        Ctl3D = True
+        Ctl3D = False
         ItemHeight = 13
         ItemIndex = 0
         ParentCtl3D = False

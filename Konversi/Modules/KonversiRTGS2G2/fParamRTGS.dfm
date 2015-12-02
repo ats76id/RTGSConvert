@@ -576,7 +576,7 @@ object frmParamRTGSConvert: TfrmParamRTGSConvert
             Top = 24
             Width = 99
             Height = 21
-            Ctl3D = True
+            Ctl3D = False
             ItemHeight = 13
             ParentCtl3D = False
             Sorted = True
@@ -920,7 +920,6 @@ object frmParamRTGSConvert: TfrmParamRTGSConvert
     Top = 156
   end
   object tblKonversiTC: TADOTable
-    Connection = GlobalVarDM.DailyADOConn
     Left = 257
     Top = 34
   end

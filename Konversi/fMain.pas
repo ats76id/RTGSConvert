@@ -5,7 +5,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  DB, ADODB, ActnList, Menus, ImgList, ComCtrls, 
+  DB, ADODB, ActnList, Menus, ImgList, 
   dxNavBarStyles, dxNavBarCollns, dxNavBar, ExtCtrls,
   GR32_Image, Dialogs, LMDCustomComponent, LMDContainerComponent,
   LMDBaseDialog, LMDAboutDlg, JvLabel, JvTimer, LMDControl,
@@ -14,7 +14,7 @@ uses
   LMDCustomParentPanel, LMDBackPanel, LMDCustomSimpleLabel, LMDSimpleLabel,
   JvStaticText, ARProtector, DateUtils, dxBar, cxClasses, cxGraphics,
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxRibbonSkins,
-  dxRibbon, XPMan;
+  dxRibbon, XPMan, dxStatusBar;
 const
   APP_VERSION = '1.2 B151129.1605';
   CM_LOGIN = WM_APP + 111;
@@ -94,7 +94,6 @@ type
     imgBack: TImage32;
     pnlClear: TPanel;
     imgClear: TImage32;
-    StatusBar: TStatusBar;
     acIncrParameterImportDKI: TAction;
     actReSendSPK: TAction;
     lbInfoJam: TLMDInformationLabel;
@@ -150,6 +149,7 @@ type
     dxbtnKonversiRTGSSwift: TdxBarLargeButton;
     actKonversiRTGSSwift: TAction;
     imgLitle: TImageList;
+    StatusBar: TdxStatusBar;
     procedure Exit1Click(Sender: TObject);
     procedure actParameterExecute(Sender: TObject);
     procedure actExitExecute(Sender: TObject);
@@ -771,7 +771,7 @@ begin
     dxRibbon.ShowTabGroups := True;
 
     FHasLogin := True;
-    ARProtector1.Enabled := True;
+    //ARProtector1.Enabled := True;
     Application.ProcessMessages;
     //sbStatus.Repaint;
   end
@@ -976,6 +976,8 @@ procedure TfrmMain.FormCreate(Sender: TObject);
 var
 	bgFile,bgFile2:String;
 begin
+	DoubleBuffered := True;
+
   ARProtector1.Enabled := False;
   
   ShortDateFormat := SDF_ENGLISH_US;

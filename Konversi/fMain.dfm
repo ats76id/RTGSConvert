@@ -628,31 +628,37 @@ object frmMain: TfrmMain
         ParentFont = False
       end
     end
-    object StatusBar: TStatusBar
+    object StatusBar: TdxStatusBar
       Left = 0
       Top = 306
       Width = 790
       Height = 22
       Panels = <
         item
-          Alignment = taCenter
+          PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
           Width = 100
         end
         item
-          Alignment = taCenter
+          PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
           Width = 210
         end
         item
+          PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
           Width = 650
         end
         item
-          Alignment = taCenter
-          Style = psOwnerDraw
+          PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
           Width = 80
         end>
-      ParentShowHint = False
-      ShowHint = False
+      PaintStyle = stpsOffice11
       SizeGrip = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBtnText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ShowHint = False
+      ParentShowHint = False
     end
   end
   object dxRibbon: TdxRibbon

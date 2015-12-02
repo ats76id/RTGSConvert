@@ -238,37 +238,6 @@ object frmCari: TfrmCari
       LabelFont.Name = 'MS Sans Serif'
       LabelFont.Style = []
     end
-    object AdvGlowButton1: TAdvGlowButton
-      Left = 784
-      Top = 33
-      Width = 74
-      Height = 28
-      Caption = '&Cari'
-      Default = True
-      NotesFont.Charset = DEFAULT_CHARSET
-      NotesFont.Color = clWindowText
-      NotesFont.Height = -11
-      NotesFont.Name = 'Tahoma'
-      NotesFont.Style = []
-      TabOrder = 1
-      OnClick = AdvGlowButton1Click
-      Appearance.ColorChecked = 16111818
-      Appearance.ColorCheckedTo = 16367008
-      Appearance.ColorDisabled = 15921906
-      Appearance.ColorDisabledTo = 15921906
-      Appearance.ColorDown = 16111818
-      Appearance.ColorDownTo = 16367008
-      Appearance.ColorHot = 16117985
-      Appearance.ColorHotTo = 16372402
-      Appearance.ColorMirrorHot = 16107693
-      Appearance.ColorMirrorHotTo = 16775412
-      Appearance.ColorMirrorDown = 16102556
-      Appearance.ColorMirrorDownTo = 16768988
-      Appearance.ColorMirrorChecked = 16102556
-      Appearance.ColorMirrorCheckedTo = 16768988
-      Appearance.ColorMirrorDisabled = 11974326
-      Appearance.ColorMirrorDisabledTo = 15921906
-    end
     object cboJenisKonversi: TAdvComboBox
       Left = 112
       Top = 40
@@ -302,7 +271,7 @@ object frmCari: TfrmCari
       Left = 651
       Top = 40
       Width = 121
-      Height = 21
+      Height = 19
       Flat = True
       ParentFlat = False
       CriticalPoints.MaxValueIncluded = False
@@ -379,36 +348,31 @@ object frmCari: TfrmCari
       LookupPersist.MaxCount = False
       MatchCase = False
     end
-    object AdvGlowButton2: TAdvGlowButton
+    object AdvGlowButton1: TBitBtn
+      Left = 784
+      Top = 32
+      Width = 74
+      Height = 28
+      Caption = '&Cari'
+      Default = True
+      TabOrder = 1
+      TabStop = False
+      WordWrap = True
+      OnClick = AdvGlowButton1Click
+      Spacing = 2
+    end
+    object AdvGlowButton2: TBitBtn
       Left = 864
-      Top = 33
+      Top = 32
       Width = 74
       Height = 28
       Cancel = True
       Caption = '&Tutup'
-      NotesFont.Charset = DEFAULT_CHARSET
-      NotesFont.Color = clWindowText
-      NotesFont.Height = -11
-      NotesFont.Name = 'Tahoma'
-      NotesFont.Style = []
       TabOrder = 6
+      TabStop = False
+      WordWrap = True
       OnClick = AdvGlowButton2Click
-      Appearance.ColorChecked = 16111818
-      Appearance.ColorCheckedTo = 16367008
-      Appearance.ColorDisabled = 15921906
-      Appearance.ColorDisabledTo = 15921906
-      Appearance.ColorDown = 16111818
-      Appearance.ColorDownTo = 16367008
-      Appearance.ColorHot = 16117985
-      Appearance.ColorHotTo = 16372402
-      Appearance.ColorMirrorHot = 16107693
-      Appearance.ColorMirrorHotTo = 16775412
-      Appearance.ColorMirrorDown = 16102556
-      Appearance.ColorMirrorDownTo = 16768988
-      Appearance.ColorMirrorChecked = 16102556
-      Appearance.ColorMirrorCheckedTo = 16768988
-      Appearance.ColorMirrorDisabled = 11974326
-      Appearance.ColorMirrorDisabledTo = 15921906
+      Spacing = 2
     end
   end
   object DataSource1: TDataSource

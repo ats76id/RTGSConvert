@@ -4,14 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, AdvObj, BaseGrid, AdvGrid, DBAdvGrid, AsgFindDialog,
-  AdvToolBar, AdvToolBarStylers, AdvGlowButton, DB, ADODB, DBGrids,
-  JvExDBGrids, JvDBGrid, Mask, JvExMask, JvToolEdit, JvMaskEdit,
+  Dialogs, Grids, 
+  DB, ADODB, DBGrids,
+  JvExDBGrids, JvDBGrid, JvExMask, JvMaskEdit,
   JvDBFindEdit, StdCtrls, JvExStdCtrls, JvEdit, JvDBSearchEdit, JvCombobox,
   JvDBSearchComboBox, JvDBUltimGrid, ExtCtrls, AdvPanel, ComCtrls,
-  AdvDateTimePicker, AdvSmoothEdit, AdvSmoothEditButton,
-  AdvSmoothDatePicker, AdvGlassButton, AdvCombo, MoneyEdit, AdvEdit,
-  AdvMoneyEdit, JvValidateEdit, advlued, XPMan;
+  AdvDateTimePicker, 
+  AdvCombo, AdvEdit,
+  JvValidateEdit, advlued, XPMan, Buttons;
 
 type
   TfrmCari = class(TForm)
@@ -20,7 +20,6 @@ type
     AdvPanel1: TAdvPanel;
     AdvPanelStyler1: TAdvPanelStyler;
     edtTanggalKonversi: TAdvDateTimePicker;
-    AdvGlowButton1: TAdvGlowButton;
     Label1: TLabel;
     Label2: TLabel;
     cboJenisKonversi: TAdvComboBox;
@@ -32,7 +31,8 @@ type
     edtToMember: TAdvLUEdit;
     XPManifest1: TXPManifest;
     qrySearch: TADOQuery;
-    AdvGlowButton2: TAdvGlowButton;
+    AdvGlowButton1: TBitBtn;
+    AdvGlowButton2: TBitBtn;
     procedure edtTanggalKonversiChange(Sender: TObject);
     procedure AdvGlowButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);

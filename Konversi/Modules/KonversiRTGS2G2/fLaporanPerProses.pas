@@ -12,8 +12,6 @@ type
   TfrmLaporanPerProses = class(TForm)
     AdvPanel1: TAdvPanel;
     Panel2: TPanel;
-    btnGeneralEdit: TBitBtn;
-    btnGeneralSave: TBitBtn;
     AdvGroupBox1: TAdvGroupBox;
     Label1: TLabel;
     dtpTanggalKonversi: TAdvDateTimePicker;
@@ -24,6 +22,8 @@ type
     ragJenisKonversi: TAdvOfficeRadioGroup;
     XPManifest1: TXPManifest;
     XPManifest2: TXPManifest;
+    btnGeneralEdit: TBitBtn;
+    btnGeneralSave: TBitBtn;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnGeneralEditClick(Sender: TObject);

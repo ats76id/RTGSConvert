@@ -59,7 +59,7 @@ object frmLaporanPerProses: TfrmLaporanPerProses
       ParentColor = True
       TabOrder = 0
       object btnGeneralEdit: TBitBtn
-        Left = 28
+        Left = 34
         Top = 12
         Width = 85
         Height = 29
@@ -72,7 +72,7 @@ object frmLaporanPerProses: TfrmLaporanPerProses
         Spacing = 2
       end
       object btnGeneralSave: TBitBtn
-        Left = 118
+        Left = 124
         Top = 12
         Width = 85
         Height = 29
@@ -112,15 +112,12 @@ object frmLaporanPerProses: TfrmLaporanPerProses
         Top = 19
         Width = 106
         Height = 21
-        BevelInner = bvNone
-        BevelOuter = bvNone
-        BevelKind = bkFlat
         Date = 41320.169918981480000000
         Time = 41320.169918981480000000
         Kind = dkDate
         TabOrder = 0
-        BorderStyle = bsNone
-        Ctl3D = True
+        BorderStyle = bsSingle
+        Ctl3D = False
         DateTime = 41320.169918981480000000
         Version = '1.2.0.5'
         LabelFont.Charset = DEFAULT_CHARSET
@@ -177,13 +174,13 @@ object frmLaporanPerProses: TfrmLaporanPerProses
       'FROM RTGS2SKNHISTORY'
       'Group by ConvertType, DateProcess, FIleName'
       'order by ConvertType, DateProcess, FIleName')
-    Left = 152
-    Top = 8
+    Left = 128
+    Top = 80
   end
   object dsRptMaster: TDataSource
     DataSet = qryRptMaster
-    Left = 128
-    Top = 8
+    Left = 104
+    Top = 80
   end
   object frxDBDataset1: TfrxDBDataset
     UserName = 'frxDBDataset1'
@@ -202,8 +199,8 @@ object frmLaporanPerProses: TfrmLaporanPerProses
       'TotalNominalHapus=TotalNominalHapus')
     DataSet = qryRptMaster
     BCDToCurrency = False
-    Left = 181
-    Top = 9
+    Left = 157
+    Top = 81
   end
   object frxReport1: TfrxReport
     Version = '4.9.35'
@@ -338,8 +335,8 @@ object frmLaporanPerProses: TfrmLaporanPerProses
       '  '
       'end.')
     OnGetValue = frxReport1GetValue
-    Left = 211
-    Top = 12
+    Left = 187
+    Top = 84
     Datasets = <
       item
         DataSet = frxDBDataset1
