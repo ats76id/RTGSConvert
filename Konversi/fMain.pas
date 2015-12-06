@@ -150,6 +150,7 @@ type
     actKonversiRTGSSwift: TAction;
     imgLitle: TImageList;
     StatusBar: TdxStatusBar;
+    dxBarLargeButton1: TdxBarLargeButton;
     procedure Exit1Click(Sender: TObject);
     procedure actParameterExecute(Sender: TObject);
     procedure actExitExecute(Sender: TObject);
@@ -274,7 +275,8 @@ implementation
 
 uses fGlobalVar, fGlobalVarDM, fChangeLog, reg_main, uni_RegCommon, StrUtils, fLogon, fConst,
   fManageUser, fNewGroup, fNewUser, fOptions, fUserMain,
-  fRules, fUserLib, fUMCResStr, fLogActivities, futils, fAboutNew, fLocked;
+  fRules, fUserLib, fUMCResStr, fLogActivities, futils, fAboutNew, fLocked,
+  fTanggalSistem;
 
 {$R *.dfm}
 
@@ -387,9 +389,28 @@ begin
   	frmSOD.Free;
   end;
   *)
+
+  (*
   ExecLibrary(LIB_SOD);
   GlobalVarForm.InitConfig;
   SetStatusBar;
+  *)
+
+  Application.CreateForm(TfrmDateActive, frmDateActive);
+	try
+  	frmDateActive.ShowModal;
+    if frmDateActive.ModalResult = mrOK then
+    begin
+      GlobalVarForm.SystemToday := frmDateActive.dtpSystemDate.Date;
+      GlobalVarForm.SystemStatus:= SYS_STATUS_OPENED;
+
+      //GlobalVarForm.InitConfig;
+    	SetStatusBar;
+    end;
+  finally
+  	frmDateActive.Free;
+  end;
+
 end;
 
 procedure TfrmMain.actDownloadExecute(Sender: TObject);
@@ -679,6 +700,9 @@ begin
     //pnlClear.Visible := False;
     //pnlMain.Visible := True;
     Application.ProcessMessages;
+
+    GlobalVarForm.SystemToday := Date;
+    GlobalVarForm.SystemStatus := SYS_STATUS_OPENED;
 
     frmUserLib.usrUserModuleAccess(frmLogin.UserName);
 

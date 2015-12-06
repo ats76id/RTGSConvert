@@ -299,7 +299,7 @@ end;
 procedure TfrmMain.WriteToLog(strLog: String);
 begin
 	//SaveLog('INWARD::[Upload] ' + strLog, FUserName);
-  GlobalVarDM.DoWriteLogDaily(FUserName, MDL_EXPORT_DKI, '[KONVERSI]' + strLog);
+  GlobalVarDM.DoWriteLogDaily(FUserName, MDL_KONVERSI_RTGS, '[KONVERSIRTGS]' + strLog);
 end;
 
 procedure TfrmMain.FillPeriode;
@@ -602,7 +602,7 @@ begin
 
   StatusBar.Panels[1].Text := Format(' 0 / %d', [memData.RecordCount]);
   StatusBar.Refresh;
-  AddLog(Format('Konversi : %s ....', [ExtractFileName(SourceFile)]));
+  AddLog(Format('Store Data : %s ....', [ExtractFileName(SourceFile)]));
 
   memData.First;
   strHeaderTanggalTransaksi := memData.FieldByName('HCreationDate').AsString;
@@ -632,6 +632,8 @@ begin
             FConvertType, FExportDateTime) then
       begin
         AddLog(Format('No.Ref: %s sudah ada.', [memData.FieldByName('relref').AsString]));
+        WriteToLog(Format('No.Ref: %s sudah ada.', [memData.FieldByName('relref').AsString]));
+
         InsertData(2, FSession, '', Format('No.Ref: %s sudah ada.', [memData.FieldByName('relref').AsString]));
         Inc(intTotalAllItem);
         memData.Next;
@@ -639,6 +641,8 @@ begin
       else if Trim(memData.FieldByName('SandiKotaAsal').AsString)='' then
       begin
         AddLog(Format('Sandi kota asal cabang %s tidak terdaftar.', [memData.FieldByName('SandiCabang').AsString]));
+        WriteToLog(Format('Sandi kota asal cabang %s tidak terdaftar.', [memData.FieldByName('SandiCabang').AsString]));
+
         InsertData(0, FSession, '', Format('Sandi kota asal cabang %s tidak terdaftar.', [memData.FieldByName('SandiCabang').AsString]));
         Inc(intTotalAllItem);
         memData.Next;
@@ -849,6 +853,9 @@ begin
       end;
     end
     else begin
+    	AddLog(Format('%s, TRN bukan yg dikonversi.', [Trim(memData.FieldByName('TRN').AsString)]));
+    	WriteToLog(Format('%s, TRN bukan yg dikonversi.', [Trim(memData.FieldByName('TRN').AsString)]));
+
 			InsertData(0, FSession, '', 'TRN bukan yg dikonversi');
 
       Inc(intTotalAllItem);
@@ -927,6 +934,10 @@ begin
   AddLog(Format('Total item                   : %d', [memData.RecordCount]));
   AddLog(Format('Total item berhasil konversi : %d', [intTotalAllItemProcessed]));
   AddLog(Format('Total item gagal konversi    : %d', [memData.RecordCount - intTotalAllItemProcessed]));
+
+  WriteToLog(Format('Total item                   : %d', [memData.RecordCount]));
+  WriteToLog(Format('Total item berhasil konversi : %d', [intTotalAllItemProcessed]));
+  WriteToLog(Format('Total item gagal konversi    : %d', [memData.RecordCount - intTotalAllItemProcessed]));
 end;
 
 procedure TfrmMain.ProcessFile2(SourceFile:string;idxFile:Integer);
@@ -1529,11 +1540,19 @@ var
 begin
   StatusBar.Panels[0].Text :=  'Sibuk';
   if FConvertType = 1 then
-  	AddLog('Konversi RTGS->SKN: MULAI')
+  begin
+  	AddLog('Konversi RTGS->SKN: MULAI');
+    WriteToLog('Konversi RTGS->SKN: MULAI');
+  end
   else if FConvertType = 2 then
-  	AddLog('Konversi RTGS->REMM: MULAI')
-  else
+  begin
+  	AddLog('Konversi RTGS->REMM: MULAI');
+    WriteToLog('Konversi RTGS->REMM: MULAI');
+  end
+  else begin
   	AddLog('Konversi RTGS: MULAI');
+    WriteToLog('Konversi RTGS: MULAI');
+	end;
 
   FExportDateTime := Now;
   FSession := GetSession;
@@ -1552,6 +1571,8 @@ begin
               if ((SearchRec1.Attr and faDirectory) = 0) then
               begin
                 try
+                    AddLog('Konversi File: ' + ExtractFileName(SearchRec1.Name));
+                    WriteToLog('Konversi File ' + ExtractFileName(SearchRec1.Name));
                     ProcessFile(ExtractFilePath(strFullFile) + SearchRec1.Name, NumberOfFiles+1);
                     ProcessData(ExtractFilePath(strFullFile) + SearchRec1.Name, NumberOfFiles+1);
                 finally
@@ -1564,10 +1585,13 @@ begin
           finally
             SysUtils.FindClose(SearchRec1);
             AddLog(Format('Path [%s], %d file diproses.', [GlobalVarForm.RTGSConvertFolder, NumberOfFiles]));
+            WriteToLog(Format('Path [%s], %d file diproses.', [GlobalVarForm.RTGSConvertFolder, NumberOfFiles]));
           end;
         end
-        else
+        else begin
           AddLog('File tidak ada atau folder kosong.');
+          WriteToLog('File tidak ada atau folder kosong.');
+        end;
       end
       else
       begin
@@ -1599,14 +1623,20 @@ begin
     except
       on E:Exception do
       begin
-        AddLog('Error: ' + E.Message);
+        AddLog('Error Konversi: ' + E.Message);
+        WriteToLog('Error Konversi: ' + E.Message);
       end;
     end;
   finally
     if FConvertType = 1 then
-    	AddLog('Konversi RTGS->SKN: Selesai')
-    else
+    begin
+    	AddLog('Konversi RTGS->SKN: Selesai');
+			WriteToLog('Konversi RTGS->SKN: Selesai');
+    end
+    else begin
     	AddLog('Konversi RTGS->REMM: Selesai');
+    	WriteToLog('Konversi RTGS->REMM: Selesai');
+    end;
     StatusBar.Panels[0].Text :=  'Siap';
     StatusBar.Panels[1].Text :=  '';
   end;

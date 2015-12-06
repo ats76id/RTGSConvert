@@ -175,7 +175,7 @@ begin
     	Self.Caption := 'View Log - Aktifitas';
   end;
 
-	dtTglKliring.Date := GlobalVarForm.SystemToday;
+	dtTglKliring.Date := Now; //GlobalVarForm.SystemToday;
   DoOpenLog;
 end;
 

@@ -28,7 +28,8 @@ uses
   uni_RegCommon in 'shared\uni_RegCommon.pas',
   fUserLib in 'shared\fUserLib.pas' {frmUserLib},
   fAboutNew in 'fAboutNew.pas' {AboutBox},
-  fLocked in 'fLocked.pas' {frmLocked};
+  fLocked in 'fLocked.pas' {frmLocked},
+  fTanggalSistem in 'fTanggalSistem.pas' {frmDateActive};
 
 {$R *.res}
 
@@ -44,6 +45,7 @@ begin
   Application.CreateForm(TfrmUserLib, frmUserLib);
   Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(TfrmLocked, frmLocked);
+  Application.CreateForm(TfrmDateActive, frmDateActive);
   frmMain.ConfigFile := ExtractFilePath(Application.ExeName) + 'Config.xml';
   GlobalVarForm.ProfileRegistryKey := frmMain.ConfigFile;
   GlobalVarForm.InitConfig;

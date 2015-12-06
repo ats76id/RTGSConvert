@@ -672,6 +672,7 @@ object frmMain: TfrmMain
     TabOrder = 6
     TabStop = False
     object dxRibbonHome: TdxRibbonTab
+      Active = True
       Caption = 'Home'
       Groups = <
         item
@@ -694,7 +695,6 @@ object frmMain: TfrmMain
       Index = 1
     end
     object dxRibbonKonversi: TdxRibbonTab
-      Active = True
       Caption = 'Konversi'
       Groups = <
         item
@@ -799,7 +799,7 @@ object frmMain: TfrmMain
     object actSOD: TAction
       Tag = 1
       Category = 'Sistem'
-      Caption = '&SOD/EOD'
+      Caption = '&SOD'
       Hint = 'SOD/EOD'
       OnExecute = actSODExecute
     end
@@ -1391,6 +1391,12 @@ object frmMain: TfrmMain
       Action = actExit
       Category = 0
       LargeImageIndex = 24
+      Width = 80
+    end
+    object dxBarLargeButton1: TdxBarLargeButton
+      Action = actSOD
+      Category = 0
+      LargeImageIndex = 29
       Width = 80
     end
     object dxbtnParameterSistem: TdxBarLargeButton

@@ -200,6 +200,7 @@ const
   MDL_VERIFIKASI_DKI			 =  13;
   MDL_INTF_RETUR					 =  14;
   MDL_EXPORT_DPI					 =  15;
+	MDL_KONVERSI_RTGS        =  99;
 
   MDL_Login_TEXT					 =  'Login';
   MDL_SE_TEXT              =  'SOD/EOD';
