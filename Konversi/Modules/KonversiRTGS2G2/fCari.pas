@@ -11,7 +11,8 @@ uses
   JvDBSearchComboBox, JvDBUltimGrid, ExtCtrls, AdvPanel, ComCtrls,
   AdvDateTimePicker, 
   AdvCombo, AdvEdit,
-  JvValidateEdit, advlued, XPMan, Buttons;
+  JvValidateEdit, advlued, XPMan, Buttons, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Menus, cxButtons;
 
 type
   TfrmCari = class(TForm)
@@ -31,8 +32,8 @@ type
     edtToMember: TAdvLUEdit;
     XPManifest1: TXPManifest;
     qrySearch: TADOQuery;
-    AdvGlowButton1: TBitBtn;
-    AdvGlowButton2: TBitBtn;
+    AdvGlowButton1: TcxButton;
+    AdvGlowButton2: TcxButton;
     procedure edtTanggalKonversiChange(Sender: TObject);
     procedure AdvGlowButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);

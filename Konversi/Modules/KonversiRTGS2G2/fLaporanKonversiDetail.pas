@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, frxClass, frxDBSet, DB, ADODB, ComCtrls, AdvDateTimePicker,
-  StdCtrls, AdvGroupBox, Buttons, ExtCtrls, AdvPanel, XPMan;
+  StdCtrls, AdvGroupBox, Buttons, ExtCtrls, AdvPanel, XPMan, cxGraphics,
+  cxLookAndFeels, cxLookAndFeelPainters, Menus, cxButtons;
 
 type
   TfrmLaporanKonversiDetail = class(TForm)
@@ -21,8 +22,8 @@ type
     cboStatusKonversi: TComboBox;
     Label3: TLabel;
     XPManifest1: TXPManifest;
-    btnGeneralEdit: TBitBtn;
-    btnGeneralSave: TBitBtn;
+    btnGeneralEdit: TcxButton;
+    btnGeneralSave: TcxButton;
     procedure btnGeneralEditClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -55,6 +56,10 @@ begin
     SQL.Clear;
     SQL.Add('SELECT * FROM ' + DB_TABLE_RTGS2SKN_HISTORY);
     SQL.Add('WHERE CONVERT(VARCHAR(10), DateProcess, 101)=' + QuotedStr(FormatDateTime('mm/dd/yyyy', dtpTanggalKonversi.Date)));
+    case FReportType of
+    	1: SQL.Add('AND ConvertType=1'); //Konversi DKOI
+    	2: SQL.Add('AND ConvertType=2'); //Konversi REMM
+    end;
     //SQL.Add('AND Status=1 ');
     if cboStatusKonversi.ItemIndex > 0 then
     	SQL.Add(Format('AND Status=%d', [cboStatusKonversi.ItemIndex-1]));

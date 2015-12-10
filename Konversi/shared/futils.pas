@@ -66,6 +66,7 @@ function GetNextString(xstring:string; strToFind:string; CharUntil:char):string;
 function ExpandFile(FileName:string):string;
 function compactDB(strConn:string):Boolean;
 function ExecDLL(ApplicationHandle:THandle;fFileName,fprocname,fparam:string): integer;
+procedure ExecDLL2(fFileName,fprocname,fparam:string);
 function IsAlpha(Value: Char): Boolean;
 function IsAlpha2(Value: Char): Boolean;
 function IsNumeric(Value: Char): Boolean;
@@ -871,6 +872,7 @@ var
   tempStr:  PChar;
   fDLLinst:HINST;
   fDLLproc: function(ApplicationHandle: THandle; Param: PChar): integer;
+  fDLLproc2: procedure(Param: PChar);
 
 begin
   Result := -1;
@@ -902,7 +904,7 @@ begin
     //Windows.MessageBox(0,PChar(fparam),'Parameters',MB_ICONINFORMATION);
     tempStr    := StrPCopy(StrAlloc(256), fparam);
     try
-      Result := fDLLproc(ApplicationHandle, tempStr);
+    	Result := fDLLproc(ApplicationHandle, tempStr)
       (*
       if StrPas(tempStr) <> fparam then
         fReturnStr := StrPas(tempStr);
@@ -912,6 +914,39 @@ begin
       FreeLibrary(fDLLinst);
       fDLLinst := 0;
     end;
+  end;
+end;
+
+function LocalGetModuleFileName: string;
+var
+  Buffer: array[0..MAX_PATH] of char;
+begin
+  SetString(Result, Buffer, Windows.GetModuleFileName(HInstance,
+    Buffer, SizeOf(Buffer)));
+end;
+
+procedure ExecDLL2(fFileName,fprocname,fparam:string);
+var
+  sFile: string;
+  FModule: HModule;
+  ShowDLLForm: procedure(strConn : PChar); stdcall;
+  LibHandle : THandle;
+begin
+  sFile := fFileName;
+
+  FModule := LoadLibrary(PChar(sFile));
+  if (FModule = 0) then  // Not found in system path, look in Application Dir
+  begin
+    sFile := ExtractFilePath(LocalGetModuleFileName) + sFile;
+    FModule := LoadLibraryEx(PChar(sFile), 0, LOAD_WITH_ALTERED_SEARCH_PATH);
+  end;
+
+  if FModule > 0 then
+  begin
+    ShowDLLForm := GetProcAddress(FModule, PChar(fprocname));
+    if Assigned(ShowDLLForm) then
+      ShowDLLForm(Pchar(fparam));
+    FreeLibrary(FModule);
   end;
 end;
 

@@ -549,6 +549,8 @@ type
     procedure SetRTGSConvertMultipleConvert(const Value: Boolean);
     function GetRTGSListTRNConvert: String;
     procedure SetRTGSListTRNConvert(const Value: String);
+    function GetPartialSyncOPSData: Boolean;
+    procedure SetPartialSyncOPSData(const Value: Boolean);
     { Private declarations }
   public
     { Public declarations }
@@ -838,6 +840,7 @@ type
     property RTGSConvertFolder:String read GetRTGSConvertFolder write SetRTGSConvertFolder;
     property RTGSConvertMultipleConvert:Boolean read GetRTGSConvertMultipleConvert write SetRTGSConvertMultipleConvert;
     property RTGSListTRNConvert:String read GetRTGSListTRNConvert write SetRTGSListTRNConvert;
+    property PartialSyncOPSData:Boolean read GetPartialSyncOPSData write SetPartialSyncOPSData;
   end;
 
 const
@@ -1256,6 +1259,7 @@ const
   KEY_GEN_DPI_FTP_TARGET_PATH						= 'FTP\DPIFTPTargetPath';
   KEY_SYSTEM_INITIAL_CR_BATCH_NO_SPK	  = 'System\InitialCrBatchNoSPK';
   KEY_SYSTEM_INITIAL_DB_BATCH_NO_SPK	  = 'System\InitialDbBatchNoSPK';
+  KEY_SYSTEM_PARTIAL_SYNC_OPSDATA					= 'System\PartialSyncOPSData';
   (* Konversi RTG -> G2 *)
   KEY_CONV_RTGS2G2_FileName							= 'CONV\RTGS2G2FileName';
   KEY_CONV_RTGS2G2_Folder							  = 'CONV\RTGS2G2Folder';
@@ -4508,6 +4512,17 @@ end;
 procedure TGlobalVarForm.SetRTGSListTRNConvert(const Value: String);
 begin
 	JvAppDBStorage1.WriteString(KEY_CONV_RTGS2G2_LIST_TRN_CONVERT, Value);
+end;
+
+
+function TGlobalVarForm.GetPartialSyncOPSData: Boolean;
+begin
+	Result := JvAppDBStorage1.ReadBoolean(KEY_SYSTEM_PARTIAL_SYNC_OPSDATA, False);
+end;
+
+procedure TGlobalVarForm.SetPartialSyncOPSData(const Value: Boolean);
+begin
+	JvAppDBStorage1.WriteBoolean(KEY_SYSTEM_PARTIAL_SYNC_OPSDATA, Value);
 end;
 
 end.

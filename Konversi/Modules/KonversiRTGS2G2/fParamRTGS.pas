@@ -8,7 +8,8 @@ uses
   LMDCustomControl, LMDCustomPanel, LMDCustomBevelPanel,
   LMDCustomParentPanel, LMDCustomGroupBox, LMDGroupBox, Buttons, ExtCtrls,
   AdvPanel, Grids, DBGrids, CEnterAsTab, AdvOfficePager,
-  AdvOfficePagerStylers, DB, ADODB, LMDCustomComboBox, LMDComboBox, XPMan;
+  AdvOfficePagerStylers, DB, ADODB, LMDCustomComboBox, LMDComboBox, XPMan,
+  cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Menus, cxButtons;
 
 type
   TfrmParamRTGSConvert = class(TForm)
@@ -35,13 +36,13 @@ type
     lstTRN: TListBox;
     cboTRN: TLMDComboBox;
     XPManifest1: TXPManifest;
-    btnGeneralEdit: TBitBtn;
-    btnGeneralSave: TBitBtn;
-    BitBtn4: TBitBtn;
-    BitBtn5: TBitBtn;
-    BitBtn1: TBitBtn;
-    BitBtn2: TBitBtn;
-    BitBtn3: TBitBtn;
+    btnGeneralEdit: TcxButton;
+    btnGeneralSave: TcxButton;
+    BitBtn4: TcxButton;
+    BitBtn5: TcxButton;
+    BitBtn1: TcxButton;
+    BitBtn2: TcxButton;
+    BitBtn3: TcxButton;
     procedure FormShow(Sender: TObject);
     procedure btnGeneralEditClick(Sender: TObject);
     procedure btnGeneralSaveClick(Sender: TObject);

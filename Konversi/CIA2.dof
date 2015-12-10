@@ -115,7 +115,7 @@ AutoIncBuild=0
 MajorVer=2
 MinorVer=0
 Release=0
-Build=7
+Build=9
 Debug=0
 PreRelease=0
 Special=0
@@ -126,7 +126,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=SANSATECH
 FileDescription=CIA - TOOLS
-FileVersion=2.0.0.7
+FileVersion=2.0.0.9
 InternalName=
 LegalCopyright=@2013, SANSATECH
 LegalTrademarks=@2013, SANSATECH
@@ -136,9 +136,47 @@ ProductVersion=1.0.0.0
 Comments=
 [Excluded Packages]
 C:\Users\admin\AppData\Roaming\DelphiSpeedUp\DelphiSpeedUpLoader7.bpl=DelphiSpeedUp Loader
+[HistoryLists\hlConditionals]
+Count=1
+Item0=EUREKALOG
 [HistoryLists\hlUnitAliases]
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[HistoryLists\hlSearchPath]
+Count=9
+Item0=..\..\shared
+Item1=..\shares
+Item2=..\..\shares;..\share
+Item3=D:\Source\SKN\Danamon\skn\modules\Interface\share
+Item4=..\shared;..\stdutils
+Item5=..\shared;..\stdutils;
+Item6=..\shared;
+Item7=..\stdutils;..\shared
+Item8=..\
+[HistoryLists\hlUnitOutputDirectory]
+Count=9
+Item0=dcu\
+Item1=dcu
+Item2=..\dcu
+Item3=..\..\dcu
+Item4=..\..\..\dcu
+Item5=..\..\..\dcu\
+Item6=..\..\dcu\
+Item7=..\dcu\
+Item8=..\shared;
 [HistoryLists\hlOutputDirectorry]
-Count=1
+Count=14
 Item0=D:\Project.Source\SIK\DEMO2\bin\test
+Item1=D:\Project.Source\SIK\FullVersion.Access.SQLServer.PerModule.BNSY\bin
+Item2=bin
+Item3=..\bin\
+Item4=..\..\bin\
+Item5=..\..\..\bin\
+Item6=..\bin
+Item7=..\..\bin
+Item8=D:\Projects\SKN\source\modules\inward\InAEDLL\bin
+Item9=C:\Project\bni.inbound\common
+Item10=\bin
+Item11=C:\Project\bca.inbound\common
+Item12=C:\Project\Mandiri.Inbound\Common
+Item13=\\Dbu01\cipezcommon

@@ -4,7 +4,7 @@ object frmLogin: TfrmLogin
   AlphaBlend = True
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
-  Caption = 'SIK - Sistem Integrasi Kliring [Logon]'
+  Caption = 'CIA - Clearing Interface Application [Logon]'
   ClientHeight = 125
   ClientWidth = 371
   Color = clBtnFace

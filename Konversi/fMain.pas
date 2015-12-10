@@ -151,6 +151,22 @@ type
     imgLitle: TImageList;
     StatusBar: TdxStatusBar;
     dxBarLargeButton1: TdxBarLargeButton;
+    dxBarLargeButton2: TdxBarLargeButton;
+    actParamKonvRTGSSwift: TAction;
+    actDaftarTTC: TAction;
+    actDaftarRekening: TAction;
+    actDaftarRekeningPajak: TAction;
+    actGenerateSwift: TAction;
+    actKonversiSattlement: TAction;
+    actGenerateLaporanSettlement: TAction;
+    actLapKonvSwift: TAction;
+    dxBarLargeButton3: TdxBarLargeButton;
+    dxBarLargeButton4: TdxBarLargeButton;
+    dxBarLargeButton5: TdxBarLargeButton;
+    dxBarSubItem1: TdxBarSubItem;
+    dxBarButton6: TdxBarButton;
+    dxBarLargeButton6: TdxBarLargeButton;
+    dxBarLargeButton7: TdxBarLargeButton;
     procedure Exit1Click(Sender: TObject);
     procedure actParameterExecute(Sender: TObject);
     procedure actExitExecute(Sender: TObject);
@@ -224,6 +240,13 @@ type
     procedure actAboutExecute(Sender: TObject);
     procedure actFindKonversiExecute(Sender: TObject);
     procedure actKonversiRTGSSwiftExecute(Sender: TObject);
+    procedure actKonversiSattlementExecute(Sender: TObject);
+    procedure actParamKonvRTGSSwiftExecute(Sender: TObject);
+    procedure actDaftarRekeningxecute(Sender: TObject);
+    procedure actDaftarRekeningPajakExecute(Sender: TObject);
+    procedure actDaftarTTCExecute(Sender: TObject);
+    procedure actGenerateLaporanSettlementExecute(Sender: TObject);
+    procedure actLapKonvSwiftExecute(Sender: TObject);
   protected
   	procedure CMLogin(var Message:TMessage); message CM_LOGIN;
   	procedure CMRegister(var Message:TMessage); message CM_REGISTER;
@@ -251,6 +274,7 @@ type
     procedure SetConfigFile(const Value: String);
     //function ExecDLL(ApplicationHandle:THandle;fFileName,fprocname,fparam:string): integer;
     function ExecLibrary(libType:Integer): integer;
+    function ExecRTGSSwiftLibrary(funCall: String): integer;
     { Private declarations }
   public
     { Public declarations }
@@ -1577,6 +1601,13 @@ begin
   Result := 0;
 end;
 
+function TfrmMain.ExecRTGSSwiftLibrary(funCall:String): integer;
+begin
+  Result := -1;
+  ExecDLL2('RTGSDLL.dll', funCall, GlobalVarDM.DailyADOConn.ConnectionString);
+  Result := 0;
+end;
+
 procedure TfrmMain.actLaporanDetailKreditKeluarExecute(Sender: TObject);
 begin
 	ExecLibrary(LIB_KR_LAPORAN_DETAIL);
@@ -1793,7 +1824,8 @@ var
   MydxFinalize: procedure; stdcall;
   tempStr    : PChar;
 begin
-	MessageDlg('Under Contruction...', mtInformation, [mbOK], 0);
+  ExecRTGSSwiftLibrary('CallKonversiSwift');
+	//MessageDlg('Under Contruction...', mtInformation, [mbOK], 0);
 (*
   DLLHandle := 0;
   DLLName := 'Project6.Dll';
@@ -1822,6 +1854,41 @@ begin
   end;
 	//ShoWMessage('Konversi RTGS-Swift');
 *)
+end;
+
+procedure TfrmMain.actKonversiSattlementExecute(Sender: TObject);
+begin
+  ExecRTGSSwiftLibrary('CallSettlementKonversi');
+end;
+
+procedure TfrmMain.actParamKonvRTGSSwiftExecute(Sender: TObject);
+begin
+  ExecRTGSSwiftLibrary('CallParameter');
+end;
+
+procedure TfrmMain.actDaftarRekeningxecute(Sender: TObject);
+begin
+  ExecRTGSSwiftLibrary('CallMapRekening');
+end;
+
+procedure TfrmMain.actDaftarRekeningPajakExecute(Sender: TObject);
+begin
+  ExecRTGSSwiftLibrary('CallMapRekPajak');
+end;
+
+procedure TfrmMain.actDaftarTTCExecute(Sender: TObject);
+begin
+  ExecRTGSSwiftLibrary('CallMapTTC');
+end;
+
+procedure TfrmMain.actGenerateLaporanSettlementExecute(Sender: TObject);
+begin
+	ExecRTGSSwiftLibrary('CallSettlementGenerator');
+end;
+
+procedure TfrmMain.actLapKonvSwiftExecute(Sender: TObject);
+begin
+  ExecRTGSSwiftLibrary('CallReport');
 end;
 
 end.

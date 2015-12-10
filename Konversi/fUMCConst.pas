@@ -4,7 +4,7 @@ interface
 
 resourcestring
   { Text }
-  rsTxtSIKUserGroup      =  'SIK User & Grup';
+  rsTxtSIKUserGroup        = 'User & Grup';
   rsTxtUser                = 'User';
   rsTxtGroup               = 'Grup';
   rsTxtOperator            = 'Operator';

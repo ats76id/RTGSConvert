@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, LMDCustomComponent, LMDWndProcComponent, LMDFormShadow,
   StdCtrls, Buttons, JvExStdCtrls, JvEdit, JvValidateEdit, ExtCtrls,
-  AdvPanel, XPMan;
+  AdvPanel, XPMan, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
+  Menus, cxButtons;
 
 type
   TfrmAddTC = class(TForm)
@@ -15,11 +16,11 @@ type
     Label1: TLabel;
     Label2: TLabel;
     edtTCBaru: TEdit;
-    AdvGlowButton1: TBitBtn;
-    AdvGlowButton2: TBitBtn;
     LMDFormShadow1: TLMDFormShadow;
     edtTCLama: TEdit;
     XPManifest1: TXPManifest;
+    AdvGlowButton1: TcxButton;
+    AdvGlowButton2: TcxButton;
     procedure AdvGlowButton1Click(Sender: TObject);
     procedure AdvGlowButton2Click(Sender: TObject);
   private

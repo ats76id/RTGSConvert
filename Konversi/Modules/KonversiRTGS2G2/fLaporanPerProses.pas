@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, frxClass, frxDBSet, DB, ADODB, ComCtrls, AdvDateTimePicker,
   StdCtrls, AdvGroupBox, Buttons, ExtCtrls, AdvPanel, XPMan,
-  AdvOfficeButtons;
+  AdvOfficeButtons, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
+  Menus, cxButtons;
 
 type
   TfrmLaporanPerProses = class(TForm)
@@ -22,8 +23,8 @@ type
     ragJenisKonversi: TAdvOfficeRadioGroup;
     XPManifest1: TXPManifest;
     XPManifest2: TXPManifest;
-    btnGeneralEdit: TBitBtn;
-    btnGeneralSave: TBitBtn;
+    btnGeneralEdit: TcxButton;
+    btnGeneralSave: TcxButton;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnGeneralEditClick(Sender: TObject);
