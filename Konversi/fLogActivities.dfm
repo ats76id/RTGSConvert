@@ -2242,11 +2242,11 @@ object frmAppLog: TfrmAppLog
           TabOrder = 2
         end
       end
-      object btnRefresh: TBitBtn
-        Left = 745
+      object btnRefresh: TcxButton
+        Left = 739
         Top = 4
-        Width = 85
-        Height = 29
+        Width = 92
+        Height = 35
         Anchors = [akTop, akRight]
         Caption = '&Refresh'
         Default = True
@@ -2254,13 +2254,16 @@ object frmAppLog: TfrmAppLog
         TabStop = False
         WordWrap = True
         OnClick = btnRefreshClick
-        Spacing = 2
+        LookAndFeel.NativeStyle = True
+        OptionsImage.ImageIndex = 20
+        OptionsImage.Images = GlobalVarForm.listGlobalImage
+        OptionsImage.Spacing = 2
       end
-      object btnClose: TBitBtn
-        Left = 745
-        Top = 36
-        Width = 85
-        Height = 29
+      object btnClose: TcxButton
+        Left = 739
+        Top = 42
+        Width = 92
+        Height = 35
         Anchors = [akTop, akRight]
         Cancel = True
         Caption = '&Tutup'
@@ -2269,7 +2272,10 @@ object frmAppLog: TfrmAppLog
         TabStop = False
         WordWrap = True
         OnClick = btnCloseClick
-        Spacing = 2
+        LookAndFeel.NativeStyle = True
+        OptionsImage.ImageIndex = 3
+        OptionsImage.Images = GlobalVarForm.listGlobalImage
+        OptionsImage.Spacing = 2
       end
     end
     object DBGrid1: TDBGrid

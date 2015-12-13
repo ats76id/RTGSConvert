@@ -10,13 +10,15 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, JvAppStorage, JvAppXMLStorage,
-  JvAppRegistryStorage, JvComponentBase, JvAppDBStorage, HCMngr,   JvSimpleXml;
+  JvAppRegistryStorage, JvComponentBase, JvAppDBStorage, HCMngr,   JvSimpleXml,
+  ImgList;
 
 type
   TGlobalVarForm = class(TForm)
     JvAppDBStorage1: TJvAppDBStorage;
     JvAppRegistryStorage1: TJvAppXMLFileStorage;
     cmCipher: TCipherManager;
+    listGlobalImage: TImageList;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
 
@@ -1361,6 +1363,7 @@ const
 
   DB_TABLE_REF_KONVERSI_TC					 = 'REF_KONVERSI_TC';
   DB_TABLE_RTGS2SKN_HISTORY					 = 'RTGS2SKNHistory';
+  DB_TABLE_RTGS2SWIFT_HISTORY				 = 'RTGSG1History';
 
 
   DELETE_AUTO       = 1;

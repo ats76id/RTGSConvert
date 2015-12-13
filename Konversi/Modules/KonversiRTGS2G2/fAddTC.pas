@@ -16,7 +16,6 @@ type
     Label1: TLabel;
     Label2: TLabel;
     edtTCBaru: TEdit;
-    LMDFormShadow1: TLMDFormShadow;
     edtTCLama: TEdit;
     XPManifest1: TXPManifest;
     AdvGlowButton1: TcxButton;
@@ -39,6 +38,8 @@ var
   frmAddTC: TfrmAddTC;
 
 implementation
+
+uses fGlobalVar;
 
 {$R *.dfm}
 

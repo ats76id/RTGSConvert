@@ -1597,14 +1597,15 @@ begin
     (* End Tools *)
   end;
 
-  ExecDLL(Application.Handle, libFile, libFunc, FParam);
+  libFile := ChangeFileExt(libFile, '.dll');
+  ExecDLL2(Application.Handle, libFile, libFunc, FParam, FUserName);
   Result := 0;
 end;
 
 function TfrmMain.ExecRTGSSwiftLibrary(funCall:String): integer;
 begin
   Result := -1;
-  ExecDLL2('RTGSDLL.dll', funCall, GlobalVarDM.DailyADOConn.ConnectionString);
+  ExecDLL2(Application.Handle, 'RTGSDLL.dll', funCall, GlobalVarDM.DailyADOConn.ConnectionString, FUserName,1);
   Result := 0;
 end;
 

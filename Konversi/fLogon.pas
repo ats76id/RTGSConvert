@@ -8,7 +8,8 @@ uses
   JvExExtCtrls, JvPanel, 
   
   jpeg, JvFormWallpaper, JvImage, JvComponentBase, JvAnimTitle,
-  JvAppAnimatedIcon, JvBevel, XPMan;
+  JvAppAnimatedIcon, JvBevel, XPMan, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Menus, cxButtons;
 
 type
   TfrmLogin = class(TForm)
@@ -19,9 +20,9 @@ type
     edName: TEdit;
     edPass: TEdit;
     Label2: TLabel;
-    btnLogon: TBitBtn;
-    btnCancel: TBitBtn;
     XPManifest1: TXPManifest;
+    btnLogon: TcxButton;
+    btnCancel: TcxButton;
     procedure btnLogonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);

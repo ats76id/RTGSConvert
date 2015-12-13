@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, LMDCustomComponent, LMDWndProcComponent,
-  LMDFormShadow, AdvPanel, Buttons, XPMan;
+  LMDFormShadow, AdvPanel, Buttons, XPMan, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Menus, cxButtons;
 
 type
   TfmManageUser = class(TForm)
@@ -30,14 +31,13 @@ type
     edStatus: TEdit;
     cbGroup: TComboBox;
     edActive: TEdit;
-    LMDFormShadow1: TLMDFormShadow;
-    bnValidate: TBitBtn;
-    bnLock: TBitBtn;
-    bnUnlock: TBitBtn;
-    bnResetPassword: TBitBtn;
-    bnSave: TBitBtn;
-    bnCancel: TBitBtn;
     XPManifest1: TXPManifest;
+    bnValidate: TcxButton;
+    bnLock: TcxButton;
+    bnUnlock: TcxButton;
+    bnResetPassword: TcxButton;
+    bnSave: TcxButton;
+    bnCancel: TcxButton;
     procedure FormShow(Sender: TObject);
     procedure bnValidateClick(Sender: TObject);
     procedure bnUnlockClick(Sender: TObject);

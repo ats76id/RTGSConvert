@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, AdvPanel, ComCtrls, AdvDateTimePicker,
-  StdCtrls, AdvGroupBox, Grids, DBGrids, DB, ADODB, Buttons, XPMan;
+  StdCtrls, AdvGroupBox, Grids, DBGrids, DB, ADODB, Buttons, XPMan,
+  cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Menus, cxButtons;
 
 type
 	TLogType = (ltNone, ltTrx, ltUser);
@@ -30,13 +31,13 @@ type
     qryLogUserlog_module: TSmallintField;
     qryLogUserlog_desc: TWideStringField;
     qryLogUseruser_name: TWideStringField;
-    btnRefresh: TBitBtn;
-    btnClose: TBitBtn;
     Label2: TLabel;
     edtUser: TEdit;
     Label3: TLabel;
     edtDesc: TEdit;
     XPManifest1: TXPManifest;
+    btnRefresh: TcxButton;
+    btnClose: TcxButton;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure dtTglKliringChange(Sender: TObject);

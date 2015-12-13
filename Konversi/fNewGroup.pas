@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ComCtrls, ExtCtrls, LMDCustomComponent,
   LMDWndProcComponent, LMDFormShadow, AdvOfficePager,
-  AdvPanel, Buttons, AdvOfficePagerStylers, XPMan;
+  AdvPanel, Buttons, AdvOfficePagerStylers, XPMan, cxGraphics,
+  cxLookAndFeels, cxLookAndFeelPainters, Menus, cxButtons;
 
 const
   NEW_GROUP    = 1;
@@ -35,12 +36,11 @@ type
     edValidateUser: TEdit;
     gbAccess: TGroupBox;
     tvAccesses: TTreeView;
-    LMDFormShadow1: TLMDFormShadow;
     pgcStyler: TAdvOfficePagerOfficeStyler;
-    bnValidate: TBitBtn;
-    bnCreate: TBitBtn;
-    bnCancel: TBitBtn;
     XPManifest1: TXPManifest;
+    bnValidate: TcxButton;
+    bnCreate: TcxButton;
+    bnCancel: TcxButton;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

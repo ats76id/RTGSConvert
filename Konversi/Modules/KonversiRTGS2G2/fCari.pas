@@ -80,19 +80,42 @@ begin
     Connection := GlobalVarDM.DailyADOConn;
 
     SQL.Clear;
-    SQL.Add('select ConvertType=Case When ConvertType=1 then ''DKOI'' Else ''REMM'' END, RelRef, FromMember, ToMember, TransactionCode, ValueDate');
-    SQL.Add(',Amount=CONVERT(NUMERIC(20,2), Amount)/100 , FromAccountNumber,FromAccountName,');
-    SQL.Add('ToAccountNumber, ToAccountName, OriginatingName, UltimateBeneAccount, UltimateBeneName, Currency,');
-    SQL.Add('SAKTINumber, PaymentDetails,FileName from ' + DB_TABLE_RTGS2SKN_HISTORY);
-    SQL.Add('where CONVERT(VARCHAR(10), DateProcess, 101)=' + QuotedStr(FormatDateTime('mm/dd/yyyy', edtTanggalKonversi.Date)));
-    if cboJenisKonversi.ItemIndex > 0 then
-    	SQL.Add('AND ConvertType=' + IntToStr(cboJenisKonversi.ItemIndex));
-    if Trim(edtNoReff.Text) <> '' then
-    	SQL.Add('AND RefRef=' + QuotedStr(edtNoReff.Text));
-    if Trim(edtToMember.Text) <> '' then
-    	SQL.Add('AND ToMember=' + QuotedStr(edtToMember.Text));
-    if edtNominal.AsCurrency > 0 then
-    	SQL.Add('AND CONVERT(NUMERIC(20,2), Amount)/100 = ' + CurrToStr(edtNominal.AsCurrency));
+
+    if (cboJenisKonversi.ItemIndex = 0) or (cboJenisKonversi.ItemIndex < 3) then
+    begin
+      SQL.Add('select ConvertType=Case When ConvertType=1 then ''DKOI'' Else ''REMM'' END, RelRef, FromMember, ToMember, TransactionCode, ValueDate');
+      SQL.Add(',Amount=CONVERT(NUMERIC(20,2), Amount)/100 , FromAccountNumber,FromAccountName,');
+      SQL.Add('ToAccountNumber, ToAccountName, OriginatingName, UltimateBeneAccount, UltimateBeneName, Currency,');
+      SQL.Add('SAKTINumber, PaymentDetails,FileName from ' + DB_TABLE_RTGS2SKN_HISTORY);
+      SQL.Add('where CONVERT(VARCHAR(10), DateProcess, 101)=' + QuotedStr(FormatDateTime('mm/dd/yyyy', edtTanggalKonversi.Date)));
+      if cboJenisKonversi.ItemIndex > 0 then
+        SQL.Add('AND ConvertType=' + IntToStr(cboJenisKonversi.ItemIndex));
+      if Trim(edtNoReff.Text) <> '' then
+        SQL.Add('AND RefRef=' + QuotedStr(edtNoReff.Text));
+      if Trim(edtToMember.Text) <> '' then
+        SQL.Add('AND ToMember=' + QuotedStr(edtToMember.Text));
+      if edtNominal.AsCurrency > 0 then
+        SQL.Add('AND CONVERT(NUMERIC(20,2), Amount)/100 = ' + CurrToStr(edtNominal.AsCurrency));
+    end;
+
+    if (cboJenisKonversi.ItemIndex = 0) then
+    	SQL.Add('UNION');
+
+    if (cboJenisKonversi.ItemIndex = 0) OR (cboJenisKonversi.ItemIndex = 3) then
+    begin
+      SQL.Add('select ''SWIFT'' AS ConvertType, RelRef, FromMember, ToMember, TransactionCode, ValueDate');
+      SQL.Add(',Amount=CONVERT(NUMERIC(20,2), Amount)/100 , FromAccountNumber,FromAccountName,');
+      SQL.Add('ToAccountNumber, ToAccountName, OriginatingName, UltimateBeneAccount, UltimateBeneName, Currency,');
+      SQL.Add('SAKTINumber, PaymentDetails,FileName from ' + DB_TABLE_RTGS2SWIFT_HISTORY);
+      SQL.Add('where CONVERT(VARCHAR(10), DateProcess, 101)=' + QuotedStr(FormatDateTime('mm/dd/yyyy', edtTanggalKonversi.Date)));
+      if Trim(edtNoReff.Text) <> '' then
+        SQL.Add('AND RefRef=' + QuotedStr(edtNoReff.Text));
+      if Trim(edtToMember.Text) <> '' then
+        SQL.Add('AND ToMember=' + QuotedStr(edtToMember.Text));
+      if edtNominal.AsCurrency > 0 then
+        SQL.Add('AND CONVERT(NUMERIC(20,2), Amount)/100 = ' + CurrToStr(edtNominal.AsCurrency));
+    end;
+
     SQL.Add('ORDER BY ConvertType');
     Open;
   end;
@@ -112,6 +135,7 @@ end;
 procedure TfrmCari.FormShow(Sender: TObject);
 begin
 	edtTanggalKonversi.Date := Date;
+  cboJenisKonversi.ItemIndex := 0;
 end;
 
 procedure TfrmCari.AdvGlowButton2Click(Sender: TObject);

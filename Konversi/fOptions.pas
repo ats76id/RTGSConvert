@@ -7,7 +7,8 @@ uses
   Dialogs, StdCtrls, ComCtrls, ExtCtrls, LMDCustomComponent,
   LMDWndProcComponent, LMDFormShadow, AdvOfficePager,
   AdvPanel, Buttons, AdvOfficePagerStylers, LMDCustomControl,
-  LMDCustomPanel, LMDButtonControl, LMDCustomCheckBox, LMDCheckBox, XPMan;
+  LMDCustomPanel, LMDButtonControl, LMDCustomCheckBox, LMDCheckBox, XPMan,
+  cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Menus, cxButtons;
 
 type
   EGeneral = class(Exception);
@@ -47,11 +48,11 @@ type
     upMaxName: TUpDown;
     LMDFormShadow1: TLMDFormShadow;
     pgcStyler: TAdvOfficePagerOfficeStyler;
-    bnSave: TBitBtn;
-    bnBatal: TBitBtn;
     AdvOfficePage1: TAdvOfficePage;
     cbUseMaxLogon: TLMDCheckBox;
     XPManifest1: TXPManifest;
+    bnSave: TcxButton;
+    bnBatal: TcxButton;
     procedure FormShow(Sender: TObject);
     procedure upMinPassChangingEx(Sender: TObject;
       var AllowChange: Boolean; NewValue: Smallint;

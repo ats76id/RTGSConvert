@@ -66,7 +66,7 @@ function GetNextString(xstring:string; strToFind:string; CharUntil:char):string;
 function ExpandFile(FileName:string):string;
 function compactDB(strConn:string):Boolean;
 function ExecDLL(ApplicationHandle:THandle;fFileName,fprocname,fparam:string): integer;
-procedure ExecDLL2(fFileName,fprocname,fparam:string);
+procedure ExecDLL2(ApplicationHandle:THandle;fFileName,fprocname,fparam, fUsername:string;const intType:Integer=0);
 function IsAlpha(Value: Char): Boolean;
 function IsAlpha2(Value: Char): Boolean;
 function IsNumeric(Value: Char): Boolean;
@@ -870,10 +870,8 @@ end;
 function ExecDLL(ApplicationHandle:THandle;fFileName,fprocname,fparam:string): integer;
 var
   tempStr:  PChar;
-  fDLLinst:HINST;
-  fDLLproc: function(ApplicationHandle: THandle; Param: PChar): integer;
-  fDLLproc2: procedure(Param: PChar);
-
+  fDLLinst:HMODULE;
+  fDLLproc: function(ApplicationHandle: THandle; Param: PChar): integer;stdcall;
 begin
   Result := -1;
   fDLLinst := 0;
@@ -925,14 +923,18 @@ begin
     Buffer, SizeOf(Buffer)));
 end;
 
-procedure ExecDLL2(fFileName,fprocname,fparam:string);
+procedure ExecDLL2(ApplicationHandle:THandle;fFileName,fprocname,fparam, fUsername:string;const intType:Integer);
 var
   sFile: string;
-  FModule: HModule;
-  ShowDLLForm: procedure(strConn : PChar); stdcall;
+  FModule: HMODULE;
+  ShowDLLForm: procedure(strConn, UserName : PChar); stdcall;
+  fDLLproc: function(ApplicationHandle:THandle; Param: PChar): integer;stdcall;
   LibHandle : THandle;
+  tempParam:  PChar;
+  tempStr:  PChar;
 begin
-  sFile := fFileName;
+  ShowMessage(fUsername);
+	sFile := fFileName;
 
   FModule := LoadLibrary(PChar(sFile));
   if (FModule = 0) then  // Not found in system path, look in Application Dir
@@ -943,10 +945,22 @@ begin
 
   if FModule > 0 then
   begin
-    ShowDLLForm := GetProcAddress(FModule, PChar(fprocname));
-    if Assigned(ShowDLLForm) then
-      ShowDLLForm(Pchar(fparam));
-    FreeLibrary(FModule);
+  	if intType=0 then
+    	fDLLproc := GetProcAddress(FModule, PChar(fprocname))
+    else
+    	ShowDLLForm := GetProcAddress(FModule, PChar(fprocname));
+
+    try
+      if  (Assigned(ShowDLLForm)) then
+        ShowDLLForm(PChar(fparam), PChar(fUsername))
+      else begin
+    		tempParam    := StrPCopy(StrAlloc(256), fparam);
+        fDLLproc(ApplicationHandle, tempParam);
+      end;
+    finally
+      FreeLibrary(FModule);
+      FModule := 0;
+    end;
   end;
 end;
 

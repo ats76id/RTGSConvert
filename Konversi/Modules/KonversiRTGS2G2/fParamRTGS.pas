@@ -88,7 +88,7 @@ begin
   GlobalVarForm.RTGSConvertMultipleConvert := cbxMultipleOption.Checked;
   GlobalVarForm.RTGSListTRNConvert := lstTRN.Items.DelimitedText;
 
-  Application.MessageBox('Parameter berhasil disimpan.', PChar(Application.Title), MB_OK + MB_ICONINFORMATION);
+  Application.MessageBox('Parameter berhasil disimpan.', PChar(Self.Caption), MB_OK + MB_ICONINFORMATION);
   ModalResult := mrOk;
 end;
 

@@ -3,15 +3,15 @@ unit uRTGS2G2;
 interface
 
 uses
-  Sysutils, Forms;
+  Sysutils, Forms, dxCore;
 
-function CallConvRTGS2G2(ApplicationHandle: THandle; Param:PChar):Integer; export;
-function CallConvParam(ApplicationHandle: THandle; Param:PChar):Integer; export;
+function CallConvRTGS2G2(ApplicationHandle: THandle; Param:PChar):Integer; export;stdcall;
+function CallConvParam(ApplicationHandle: THandle; Param:PChar):Integer; export;stdcall;
 
-function CallRptPerProsesFile(ApplicationHandle: THandle; Param:PChar):Integer; export;
-function CallRptKonversiSKN(ApplicationHandle: THandle; Param:PChar):Integer; export;
-function CallRptKonversiREMM(ApplicationHandle: THandle; Param:PChar):Integer; export;
-function CallCariData(ApplicationHandle: THandle; Param:PChar):Integer; export;
+function CallRptPerProsesFile(ApplicationHandle: THandle; Param:PChar):Integer; export;stdcall;
+function CallRptKonversiSKN(ApplicationHandle: THandle; Param:PChar):Integer; export;stdcall;
+function CallRptKonversiREMM(ApplicationHandle: THandle; Param:PChar):Integer; export;stdcall;
+function CallCariData(ApplicationHandle: THandle; Param:PChar):Integer; export;stdcall;
 
 var
   strApplicationPath,
@@ -307,6 +307,12 @@ begin
     Application.Handle:=OldApplicationHandle;
   end;
 end;
+
+initialization
+  dxInitialize;
+
+finalization
+	dxFinalize;
 
 end.
 
