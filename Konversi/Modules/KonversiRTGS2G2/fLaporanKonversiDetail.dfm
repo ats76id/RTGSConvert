@@ -168,6 +168,7 @@ object frmLaporanKonversiDetail: TfrmLaporanKonversiDetail
     end
   end
   object qryRptMaster: TADOQuery
+    Active = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=pass@word1;Persist Security Info=Tr' +
       'ue;User ID=sa;Initial Catalog=DBSIK;Data Source=WIN7-DELPHI-ATS\' +
@@ -234,7 +235,8 @@ object frmLaporanKonversiDetail: TfrmLaporanKonversiDetail
       'SandiCabang=SandiCabang'
       'ConvertType=ConvertType'
       'HCreditCount=HCreditCount'
-      'HCreditAmount=HCreditAmount')
+      'HCreditAmount=HCreditAmount'
+      'G1File=G1File')
     DataSet = qryRptMaster
     BCDToCurrency = False
     Left = 69
@@ -959,7 +961,7 @@ object frmLaporanKonversiDetail: TfrmLaporanKonversiDetail
           Font.Style = [fsBold]
           Frame.Typ = [ftBottom]
           Memo.UTF8 = (
-            '[frxDBDataset1."FIleName"]')
+            '[frxDBDataset1."G1File"]')
           ParentFont = False
         end
       end
@@ -1036,7 +1038,7 @@ object frmLaporanKonversiDetail: TfrmLaporanKonversiDetail
     end
   end
   object XPManifest1: TXPManifest
-    Left = 40
-    Top = 8
+    Left = 32
+    Top = 48
   end
 end

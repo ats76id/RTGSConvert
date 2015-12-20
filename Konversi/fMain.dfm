@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 205
-  Top = 115
-  Width = 931
+  Left = 158
+  Top = 125
+  Width = 1084
   Height = 492
   Caption = 'CIA - TOOLS'
   Color = clBtnFace
@@ -572,7 +572,7 @@ object frmMain: TfrmMain
   object pnlClear: TPanel
     Left = 0
     Top = 126
-    Width = 915
+    Width = 1068
     Height = 328
     Align = alClient
     BevelOuter = bvNone
@@ -580,7 +580,7 @@ object frmMain: TfrmMain
     object imgClear: TImage32
       Left = 0
       Top = 0
-      Width = 915
+      Width = 1068
       Height = 328
       Align = alClient
       BitmapAlign = baCenter
@@ -592,7 +592,7 @@ object frmMain: TfrmMain
   object pnlMain: TPanel
     Left = 0
     Top = 126
-    Width = 915
+    Width = 1068
     Height = 328
     Align = alClient
     BevelOuter = bvNone
@@ -600,7 +600,7 @@ object frmMain: TfrmMain
     object imgBack: TImage32
       Left = 0
       Top = 0
-      Width = 915
+      Width = 1068
       Height = 306
       Align = alClient
       BitmapAlign = baCenter
@@ -610,7 +610,7 @@ object frmMain: TfrmMain
       object lbInfoJam: TLMDInformationLabel
         Left = 0
         Top = 0
-        Width = 915
+        Width = 1068
         Height = 27
         Align = alTop
         Info = itCurrentDateTime
@@ -631,7 +631,7 @@ object frmMain: TfrmMain
     object StatusBar: TdxStatusBar
       Left = 0
       Top = 306
-      Width = 915
+      Width = 1068
       Height = 22
       Panels = <
         item
@@ -664,7 +664,7 @@ object frmMain: TfrmMain
   object dxRibbon: TdxRibbon
     Left = 0
     Top = 0
-    Width = 915
+    Width = 1068
     Height = 126
     BarManager = dxBarManager1
     ColorSchemeName = 'Blue'
@@ -672,6 +672,7 @@ object frmMain: TfrmMain
     TabOrder = 6
     TabStop = False
     object dxRibbonHome: TdxRibbonTab
+      Active = True
       Caption = 'Home'
       Groups = <
         item
@@ -703,7 +704,6 @@ object frmMain: TfrmMain
       Index = 2
     end
     object dxRibbonUtilitas: TdxRibbonTab
-      Active = True
       Caption = 'Utilitas'
       Groups = <
         item
@@ -1167,13 +1167,13 @@ object frmMain: TfrmMain
     object actKonversiSattlement: TAction
       Tag = 907
       Category = 'Konversi'
-      Caption = 'Konversi Settlement'
+      Caption = 'Konversi Member Statement'
       OnExecute = actKonversiSattlementExecute
     end
     object actGenerateLaporanSettlement: TAction
       Tag = 908
       Category = 'Konversi'
-      Caption = 'Generate Lap.Settlement'
+      Caption = 'Generate Lap. Member Statement'
       OnExecute = actGenerateLaporanSettlementExecute
     end
     object actLapKonvSwift: TAction
@@ -1268,6 +1268,7 @@ object frmMain: TfrmMain
           ItemName = 'dxbtnLogin'
         end
         item
+          BeginGroup = True
           Visible = True
           ItemName = 'dxbtnExit'
         end>
@@ -1372,7 +1373,7 @@ object frmMain: TfrmMain
     object dxBarKonfiguriasLain: TdxBar
       Caption = 'KonfigurasiLain'
       CaptionButtons = <>
-      DockedLeft = 409
+      DockedLeft = 559
       DockedTop = 0
       FloatLeft = 212
       FloatTop = 138
@@ -1449,7 +1450,7 @@ object frmMain: TfrmMain
       Action = actLogOff
       Category = 0
       LargeImageIndex = 65
-      Width = 80
+      Width = 110
     end
     object dxbtnSOD: TdxBarLargeButton
       Action = actSOD
@@ -1461,7 +1462,7 @@ object frmMain: TfrmMain
       Action = actExit
       Category = 0
       LargeImageIndex = 64
-      Width = 80
+      Width = 110
     end
     object dxBarLargeButton1: TdxBarLargeButton
       Action = actSOD
@@ -1473,24 +1474,25 @@ object frmMain: TfrmMain
       Action = actParamKonvRTGSSwift
       Category = 0
       LargeImageIndex = 68
-      Width = 80
+      Width = 110
     end
     object dxBarLargeButton3: TdxBarLargeButton
       Action = actDaftarRekening
       Category = 0
       LargeImageIndex = 77
-      Width = 80
+      Width = 110
     end
     object dxBarLargeButton4: TdxBarLargeButton
       Action = actDaftarRekeningPajak
       Category = 0
       LargeImageIndex = 76
-      Width = 80
+      Width = 110
     end
     object dxBarLargeButton5: TdxBarLargeButton
       Action = actDaftarTTC
       Category = 0
       LargeImageIndex = 78
+      Width = 110
     end
     object dxBarSubItem1: TdxBarSubItem
       Caption = 'New SubItem'
@@ -1507,55 +1509,55 @@ object frmMain: TfrmMain
       Action = actKonversiSattlement
       Category = 0
       LargeImageIndex = 62
-      Width = 80
+      Width = 110
     end
     object dxBarLargeButton7: TdxBarLargeButton
       Action = actGenerateLaporanSettlement
       Category = 0
       LargeImageIndex = 7
-      Width = 80
+      Width = 110
     end
     object dxbtnParameterSistem: TdxBarLargeButton
       Action = actParameter
       Category = 1
       LargeImageIndex = 69
-      Width = 80
+      Width = 110
     end
     object dxbtnParameterWilayah: TdxBarLargeButton
       Action = actParamWilayah
       Category = 1
       LargeImageIndex = 82
-      Width = 80
+      Width = 110
     end
     object dxbtnParameterCabang: TdxBarLargeButton
       Action = actParamCabang
       Category = 1
       LargeImageIndex = 83
-      Width = 80
+      Width = 110
     end
     object dxbtnParameterCapem: TdxBarLargeButton
       Action = actParamCapem
       Category = 1
       LargeImageIndex = 84
-      Width = 80
+      Width = 110
     end
     object dxbtnImportTabelDimensi: TdxBarLargeButton
       Action = actImportTPK
       Category = 2
       LargeImageIndex = 72
-      Width = 80
+      Width = 110
     end
     object dxbtnParamKonversiRTGS: TdxBarLargeButton
       Action = actParamKonvRTGS
       Category = 2
       LargeImageIndex = 68
-      Width = 80
+      Width = 110
     end
     object dxbtnManajemenUser: TdxBarLargeButton
       Action = actManajUser
       Category = 3
       LargeImageIndex = 81
-      Width = 80
+      Width = 110
       SyncImageIndex = False
       ImageIndex = 52
     end
@@ -1563,13 +1565,13 @@ object frmMain: TfrmMain
       Action = actBackupDB
       Category = 3
       LargeImageIndex = 74
-      Width = 80
+      Width = 110
     end
     object dxbtnRestoreDB: TdxBarLargeButton
       Action = actRestoreDB
       Category = 3
       LargeImageIndex = 75
-      Width = 80
+      Width = 110
     end
     object dxBarLogs: TdxBarSubItem
       Caption = '&View Logs'
@@ -1585,6 +1587,7 @@ object frmMain: TfrmMain
           Visible = True
           ItemName = 'dxBarButton2'
         end>
+      ItemOptions.Size = misNormal
     end
     object dxBarButton1: TdxBarButton
       Action = actLogUser
@@ -1600,13 +1603,13 @@ object frmMain: TfrmMain
       Action = actAbout
       Category = 4
       LargeImageIndex = 70
-      Width = 80
+      Width = 110
     end
     object dxbtnRegister: TdxBarLargeButton
       Action = actRegister
       Category = 4
       LargeImageIndex = 48
-      Width = 80
+      Width = 110
     end
     object dxBarButton4: TdxBarButton
       Action = actLapKonvFormatSKN
@@ -1617,7 +1620,7 @@ object frmMain: TfrmMain
       Action = actKonversiRTGSSKN
       Category = 5
       LargeImageIndex = 61
-      Width = 80
+      Width = 110
     end
     object dxBarSubLapKonversi: TdxBarSubItem
       Caption = '&Laporan'
@@ -1657,13 +1660,13 @@ object frmMain: TfrmMain
       Action = actFindKonversi
       Category = 5
       LargeImageIndex = 54
-      Width = 80
+      Width = 110
     end
     object dxbtnKonversiRTGSSwift: TdxBarLargeButton
       Action = actKonversiRTGSSwift
       Category = 5
       LargeImageIndex = 61
-      Width = 80
+      Width = 110
     end
   end
   object cxLargeImages: TcxImageList

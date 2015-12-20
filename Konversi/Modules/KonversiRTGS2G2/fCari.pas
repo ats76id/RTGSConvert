@@ -86,7 +86,7 @@ begin
       SQL.Add('select ConvertType=Case When ConvertType=1 then ''DKOI'' Else ''REMM'' END, RelRef, FromMember, ToMember, TransactionCode, ValueDate');
       SQL.Add(',Amount=CONVERT(NUMERIC(20,2), Amount)/100 , FromAccountNumber,FromAccountName,');
       SQL.Add('ToAccountNumber, ToAccountName, OriginatingName, UltimateBeneAccount, UltimateBeneName, Currency,');
-      SQL.Add('SAKTINumber, PaymentDetails,FileName from ' + DB_TABLE_RTGS2SKN_HISTORY);
+      SQL.Add('SAKTINumber, PaymentDetails,G1File AS SourceFile,FileName As DestFile  from ' + DB_TABLE_RTGS2SKN_HISTORY);
       SQL.Add('where CONVERT(VARCHAR(10), DateProcess, 101)=' + QuotedStr(FormatDateTime('mm/dd/yyyy', edtTanggalKonversi.Date)));
       if cboJenisKonversi.ItemIndex > 0 then
         SQL.Add('AND ConvertType=' + IntToStr(cboJenisKonversi.ItemIndex));
@@ -106,7 +106,7 @@ begin
       SQL.Add('select ''SWIFT'' AS ConvertType, RelRef, FromMember, ToMember, TransactionCode, ValueDate');
       SQL.Add(',Amount=CONVERT(NUMERIC(20,2), Amount)/100 , FromAccountNumber,FromAccountName,');
       SQL.Add('ToAccountNumber, ToAccountName, OriginatingName, UltimateBeneAccount, UltimateBeneName, Currency,');
-      SQL.Add('SAKTINumber, PaymentDetails,FileName from ' + DB_TABLE_RTGS2SWIFT_HISTORY);
+      SQL.Add('SAKTINumber, PaymentDetails,G1File As SourceFile, FileName As DestFile from ' + DB_TABLE_RTGS2SWIFT_HISTORY);
       SQL.Add('where CONVERT(VARCHAR(10), DateProcess, 101)=' + QuotedStr(FormatDateTime('mm/dd/yyyy', edtTanggalKonversi.Date)));
       if Trim(edtNoReff.Text) <> '' then
         SQL.Add('AND RefRef=' + QuotedStr(edtNoReff.Text));

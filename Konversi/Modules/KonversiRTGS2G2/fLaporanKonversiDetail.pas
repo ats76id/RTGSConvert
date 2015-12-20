@@ -63,7 +63,7 @@ begin
     //SQL.Add('AND Status=1 ');
     if cboStatusKonversi.ItemIndex > 0 then
     	SQL.Add(Format('AND Status=%d', [cboStatusKonversi.ItemIndex-1]));
-    SQL.Add('Order by FileName, HSessionNumber, ConvertType, Status, SeqNumber ');
+    SQL.Add('Order by G1File, HSessionNumber, ConvertType, Status, SeqNumber ');
     Open;
 
     if Recordcount = 0 then

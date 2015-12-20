@@ -90,7 +90,7 @@ MaxStackSize=1048576
 ImageBase=4194304
 ExeDescription=
 [Directories]
-OutputDir=D:\Project.Source\SIK\DEMO2\bin\test
+OutputDir=D:\Project.Source\SIK\KonversiRTGS\bin\test
 UnitOutputDir=dcu
 PackageDLLOutputDir=
 PackageDCPOutputDir=
@@ -115,7 +115,7 @@ AutoIncBuild=0
 MajorVer=2
 MinorVer=0
 Release=0
-Build=11
+Build=13
 Debug=0
 PreRelease=0
 Special=0
@@ -126,7 +126,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=SANSATECH
 FileDescription=CIA - TOOLS
-FileVersion=2.0.0.11
+FileVersion=2.0.0.13
 InternalName=
 LegalCopyright=@2013, SANSATECH
 LegalTrademarks=@2013, SANSATECH
@@ -136,3 +136,12 @@ ProductVersion=1.0.0.0
 Comments=
 [Excluded Packages]
 C:\Users\admin\AppData\Roaming\DelphiSpeedUp\DelphiSpeedUpLoader7.bpl=DelphiSpeedUp Loader
+[HistoryLists\hlUnitAliases]
+Count=1
+Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[HistoryLists\hlUnitOutputDirectory]
+Count=1
+Item0=dcu
+[HistoryLists\hlOutputDirectorry]
+Count=1
+Item0=D:\Project.Source\SIK\KonversiRTGS\bin\test

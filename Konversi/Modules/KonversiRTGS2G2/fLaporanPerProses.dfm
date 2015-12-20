@@ -161,7 +161,7 @@ object frmLaporanPerProses: TfrmLaporanPerProses
     SQL.Strings = (
       
         'SELECT ConvertType, DateProcess=CONVERT(VARCHAR(8), DateProcess,' +
-        ' 108), FIleName'
+        ' 108), G1File'
       ',SUM(1) AS HCreditCount'
       ',SUM(CONVERT(NUMERIC(20,2), Amount,206)/100) AS HCreditAmount'
       ',SUM(CASE WHEN Status=1 THEN 1 ELSE 0 END) as TotalItemBerhasil'
@@ -178,8 +178,8 @@ object frmLaporanPerProses: TfrmLaporanPerProses
         '100 ELSE 0 end) as TotalNominalHapus'
       ''
       'FROM RTGS2SKNHISTORY'
-      'Group by ConvertType, DateProcess, FIleName'
-      'order by ConvertType, DateProcess, FIleName')
+      'Group by ConvertType, DateProcess, G1File'
+      'order by ConvertType, DateProcess, G1File')
     Left = 128
     Top = 80
   end
@@ -194,7 +194,7 @@ object frmLaporanPerProses: TfrmLaporanPerProses
     FieldAliases.Strings = (
       'ConvertType=ConvertType'
       'DateProcess=DateProcess'
-      'FIleName=FIleName'
+      'G1File=G1File'
       'HCreditCount=HCreditCount'
       'HCreditAmount=HCreditAmount'
       'TotalItemBerhasil=TotalItemBerhasil'
@@ -529,7 +529,7 @@ object frmLaporanPerProses: TfrmLaporanPerProses
           Width = 222.992270000000000000
           Height = 15.118110240000000000
           ShowHint = False
-          DataField = 'FIleName'
+          DataField = 'G1File'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -538,7 +538,7 @@ object frmLaporanPerProses: TfrmLaporanPerProses
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8 = (
-            '[frxDBDataset1."FIleName"]')
+            '[frxDBDataset1."G1File"]')
           ParentFont = False
           WordWrap = False
         end

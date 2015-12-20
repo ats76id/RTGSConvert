@@ -911,6 +911,8 @@ begin
       if FileExists(FileKonversiDKOI) then
         DeleteFile(FileKonversiDKOI);
       listNewData.SaveToFile(FileKonversiDKOI);
+      AddLog(Format('Konversi File %s -> %s', [ExtractFileName(SourceFile), ExtractFileName(FileKonversiDKOI)]));
+      WriteToLog(Format('Konversi File %s -> %s', [ExtractFileName(SourceFile), ExtractFileName(FileKonversiDKOI)]));
     end;
 
     if (FConvertType=2) AND (listREMM.Count > 0) then
@@ -919,6 +921,8 @@ begin
       if FileExists(FileKonversiREMM) then
         DeleteFile(FileKonversiREMM);
       listREMM.SaveToFile(FileKonversiREMM);
+      AddLog(Format('Konversi File %s -> %s', [ExtractFileName(SourceFile), ExtractFileName(FileKonversiREMM)]));
+      WriteToLog(Format('Konversi File %s -> %s', [ExtractFileName(SourceFile), ExtractFileName(FileKonversiREMM)]));
     end;
 
     MoveFileEx(PChar(SourceFile), PChar(ExtractFilePath(SourceFile) + 'Moved\' + ExtractFileName(SourceFile)), MOVEFILE_COPY_ALLOWED or MOVEFILE_REPLACE_EXISTING or MOVEFILE_WRITE_THROUGH);
@@ -1394,7 +1398,7 @@ begin
     SQL.Add(',[ToAccountName],[FromAccountNumber],[FromAccountName],[PaymentDetails],[MemberInfo]');
     SQL.Add(',[OriginatingName],[UltimateBeneAccount],[UltimateBeneName],[Currency],[ExchangeRate]');
     SQL.Add(',[Interest],[Period],[SAKTINumber],[SeqNumber],[Status],[Keterangan],[FileName],[SandiCabang], [SandiKotaAsal]');
-    SQL.Add(',[HCreditCount], [HCreditAmount], [FileConvert] )');
+    SQL.Add(',[HCreditCount], [HCreditAmount], [G1File] )');
 
     SQL.Add('VALUES(:ConvertType, :DateProcess,:HRecordType,:HMemberCode,:HCreationDate,:HSDD');
     SQL.Add(',:HMM,:HCCCC,:HMessageType,:HBatchType,:HSessionNumber,:RecordType,:TransactionCode');
@@ -1402,7 +1406,7 @@ begin
     SQL.Add(',:ReceiverRefNo,:DealCode,:ToAccountNumber,:ToAccountName,:FromAccountNumber,:FromAccountName');
     SQL.Add(',:PaymentDetails,:MemberInfo,:OriginatingName,:UltimateBeneAccount,:UltimateBeneName');
     SQL.Add(',:Currency,:ExchangeRate,:Interest,:Period,:SAKTINumber, :SeqNumber,:Status,:Keterangan,:FileName,:SandiCabang, :SandiKotaAsal');
-    SQL.Add(',:HCreditCount,:HCreditAmount,:FileConvert )');
+    SQL.Add(',:HCreditCount,:HCreditAmount,:G1File )');
 
     Parameters.ParamByName('ConvertType').Value := FConvertType;
     Parameters.ParamByName('HRecordType').Value := memData.FieldByName('HRecordType').AsString;
@@ -1449,7 +1453,7 @@ begin
     	Parameters.ParamByName('Keterangan').Value := 'Data Sudah dikonversi'
     else
     	Parameters.ParamByName('Keterangan').Value := AlasanReject;
-    Parameters.ParamByName('FileName').Value := ExtractFileName(memData.FieldByName('FileName').AsString);
+    Parameters.ParamByName('FileName').Value := FileConvert;
     Parameters.ParamByName('SeqNumber').Value := intSeq;
     Parameters.ParamByName('DateProcess').DataType := ftDateTime;
     Parameters.ParamByName('DateProcess').Value 	 := FExportDateTime;
@@ -1458,7 +1462,7 @@ begin
     Parameters.ParamByName('SandiKotaAsal').Value := memData.FieldByName('SandiKotaAsal').AsString;
     Parameters.ParamByName('HCreditCount').Value := memData.FieldByName('HCreditCount').AsInteger;
     Parameters.ParamByName('HCreditAmount').Value := memData.FieldByName('HCreditAmount').AsCurrency;
-    Parameters.ParamByName('FileConvert').Value := FileConvert;
+    Parameters.ParamByName('G1File').Value := ExtractFileName(memData.FieldByName('FileName').AsString);
     ExecSQL;
   end;
 

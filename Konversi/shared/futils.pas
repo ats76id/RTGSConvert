@@ -933,7 +933,7 @@ var
   tempParam:  PChar;
   tempStr:  PChar;
 begin
-  ShowMessage(fUsername);
+  //ShowMessage(fUsername);
 	sFile := fFileName;
 
   FModule := LoadLibrary(PChar(sFile));
