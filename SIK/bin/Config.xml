@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Configuration>
+  <GENERAL>
+    <ApplicationPath>D:\Project.Source\SIK\FullVersion.Access.SQLServer.PerModule.BNSY\bin</ApplicationPath>
+  </GENERAL>
+  <DB>
+    <DataSource>WIN7-DELPHI-ATS\SQLEXPRESS</DataSource>
+    <Username>sa</Username>
+    <Password>H9hnqv4dO/dNsA==</Password>
+    <DBType>2</DBType>
+  </DB>
+  <SPK>
+    <DKEFolder>C:\SKN\TPK\</DKEFolder>
+  </SPK>
+</Configuration>
